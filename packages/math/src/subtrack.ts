@@ -1,0 +1,1 @@
+export const subTrack = (a: number, b: number) => a - b; 
