@@ -16,6 +16,12 @@ export const getMany = query({
 export const add = mutation({ 
   args: {},
   handler: async (ctx) => { 
+    // You Can't add user if you are not login
+    const identity = await ctx.auth.getUserIdentity()
+    if (identity === null) { 
+      throw new Error("Not authenticated")
+    }
+
     const userId = await ctx.db.insert("users", {
       name: "Panicz"
     });
