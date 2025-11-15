@@ -18,6 +18,7 @@ export const add = mutation({
   handler: async (ctx) => { 
     // You Can't add user if you are not login
     const identity = await ctx.auth.getUserIdentity()
+
     if (identity === null) { 
       throw new Error("Not authenticated")
     }
